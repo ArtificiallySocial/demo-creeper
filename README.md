@@ -183,3 +183,29 @@ python -m pytest tests/
 | `opencv-python` | Webcam capture and frame rendering |
 | `pygame` | MP3 audio playback |
 | `numpy` | Frame manipulation |
+
+---
+
+## AI Tools Used
+
+### ElevenLabs
+Used to design a custom voice model and generate all MP3 audio assets. ElevenLabs allows fine-grained voice character prompting, which was used here to produce a deliberately unsettling robotic delivery:
+
+> *"A creepy AI voice, robotic, like Stephen Hawking. Like the AI is into some sick stuff you don't want to know about. The type of voice that would sneak into your closet and sniff your shoes."*
+
+The resulting voice model narrates all detection events — startup, human detected, target acquired, and alert.
+
+### HiDock
+Used to capture the initial design session with voice narration, then automatically transcribed and summarized the recording. HiDock's AI transcription turned a spoken design walkthrough into structured text that could be handed off for planning.
+
+### Claude (claude.ai)
+Took the transcribed HiDock summary and expanded it into a full, structured development plan — breaking the concept into modules (detector, overlay, audio, pixelation, config), defining interfaces between them, and specifying the threading model and state machine before any code was written.
+
+### OpenCode + MiniMax M2.5
+[OpenCode](https://github.com/sst/opencode) is an open-source terminal-based AI coding agent. The bulk of the application was generated using the free MiniMax M2.5 model via OpenCode, working from the Claude-produced development plan.
+
+### Claude Code
+Used after the MiniMax M2.5 pass to review the generated codebase, identify gaps and bugs, and resolve final issues before the app was functional end-to-end.
+
+### NudeNet (AGPL-3.0)
+The underlying ML model powering all detection. [NudeNet](https://github.com/notAI-tech/NudeNet) is an open-source body part detection model distributed as a compact ONNX file (~7MB) that runs entirely on CPU. Licensed under AGPL-3.0.
