@@ -1,3 +1,5 @@
+![CREEPER](assets/repo-icon.jpg)
+
 # CREEPER v1.0
 
 A real-time webcam surveillance HUD that uses AI-powered body detection to classify what it sees and respond with audio alerts. Built for macOS Apple Silicon.
